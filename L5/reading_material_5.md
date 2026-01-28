@@ -17,6 +17,6 @@ If you choose not to run the notebook, this [notebook](lesson_5.ipynb) displays 
 - To see more examples of how to use Agent Skills with the API (like multi-turn conversation), make sure to check this [guide](https://platform.claude.com/docs/en/build-with-claude/skills-guide).
 
 ## Additional References
-- To learn more about the code execution tool, check [here](https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool)
+- [Code Execution Tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool)
 - [Files API](https://platform.claude.com/docs/en/build-with-claude/files)
 - [Claude Cookbook: Skills](https://github.com/anthropics/claude-cookbooks/tree/main/skills)
