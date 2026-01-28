@@ -2,7 +2,7 @@
 
 ## Lesson Files
 
-You can find the lesson's notebook and all the required input files [here](L5).
+You can find the lesson's notebook and all the required input files [here](.).
 To run the notebook, you need to create a `.env` file containing an Anthropic API key (no Claude subscription is required):
 
 `ANTHROPIC_API_KEY="your-key"`
