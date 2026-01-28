@@ -15,7 +15,7 @@ Here are some key files to explore:
 
 To run the agent, follow the instructions in the <a href="https://github.com/https-deeplearning-ai/sc-agent-skills-files/tree/main/L7/README.md" target="_blank">README file</a>. You'll need an Anthropic API key (no subscription required).
 
-**About costs:** Running the agent with the same requests costs approximately **$3.43** in API credits if you use `haiku` as the subagent model (and using `sonnet` with the main agent), or **$6.35** if you use `sonnet` with the subagents.ß
+**About costs:** Running the agent with the same requests costs approximately &#36;3.43 in API credits if you use `haiku` as the subagent model (and using `sonnet` with the main agent), or &#36;6.35 if you use `sonnet` with the subagents.
 
 ### Prompts Used in the Lesson
 
