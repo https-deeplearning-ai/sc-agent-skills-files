@@ -1,0 +1,240 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{babel}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\pagestyle{fancyplain}
+
+\setlength{\headheight}{15.2pt}
+\setlength{\pdfpagewidth}{\paperwidth}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\headsep}{0.2in} 
+\graphicspath{{figures/}}
+
+
+\begin{document}
+	
+	\fancyhf{}
+	
+	\fancyhead[L]{Machine Learning Course} \fancyhead[C]{} \fancyhead[R]{Machine Learning Models}
+	\fancyfoot[L, R]{} \fancyfoot[C]{\thepage}
+	
+
+	
+	\section{Learning Outcomes}
+	
+	\begin{itemize}
+		\item Describe the relationship between models and the phenomena that they represent. 
+		\item Describe the relationship between independent and dependent variables in a model.
+		\item Describe the relationship between model input and model output.
+		\item Explain what model parameters are and how they are different than model input.
+	\end{itemize}
+
+
+   \section{What is a Model?}
+   
+   A model is a mathematical tool used to represent or explain some phenomena, or to predict a certain behavior. Mathematical models are used in many science and engineering disciplines. For example, the model of Gaussian (normal) distribution was first used to analyze the errors of measurement made in astronomical observations: it was observed that these errors were symmetric and that small errors occurred more frequently than large errors. The formula of normal distribution was developed to represent the distribution of these errors. In telecommunication engineering, models are used to represent the channel or medium through which speech signals are transmitted. In this way, an appropriate receiver that extracts the information from the transmitted signal could be designed. More recently, many models that represent the time evolution of COVID-19 infection rates were proposed. The main goal was to forecast the transmission of the disease and to better understand what policies to devise.\\
+   
+   Representing an observed phenomenon with a mathematical model requires making some assumptions, this is why models are just approximations of the real phenomenon and are seen as an abstraction or simplification of the real-world. However, they are useful tools that increase our understanding of the real-world:\\
+   
+   ``\textit{All models are wrong, but some are useful.}'' - George Box\\
+   
+   
+   One way to mathematically represent a model is through an input-output relationship. In other words, a model can be described as a mathematical formula that takes in an input variable and transforms it into an output variable. \\
+   
+   	\begin{figure}[h]
+   	\centering
+   	\includegraphics[width=100mm]{model2.png}
+   	\caption{\small A model can be described with a mathematical function that shown an input-output relationship.}
+   \end{figure}
+   
+   For instance, assume an automotive industry group wanted to identify over- and under-performing car models in terms of sales; it came up with a model that predicts car sales given some car characteristics (Engine size, Vehicle type,
+   Horsepower, Wheelbase, etc). The model represents the relationship between car characteristics and car sales: the input to the model is the car characteristics, the output is the car sales and the model is the mathematical equation that processes the car characteristics and computes its sales.
+   
+   \section{Machine Learning Models}
+   In supervised machine learning, we assume that there is an underlying relationship between a set of features and its corresponding label. Using the training data, we try to approximate this relationship with a machine learning model, which is a mathematical mapping or function that maps a vector of features to its corresponding label. The goal of the training phase is to find this mathematical mapping. The goal of the evaluation phase is to understand how well this mapping approximates the real relationship. The goal of the prediction phase is to use this model to predict the label of future feature vectors.\\
+   
+   	\begin{figure}[h]
+   	\centering
+   	\includegraphics[width=100mm]{model3.png}
+   	\caption{\small A machine learning model is a mathematical function that maps a feature vector to its predicted label.}
+   \end{figure}
+   
+   \noindent\textbf{Parametric vs non-parametric machine learning models}\\  
+   Different machine learning models make different assumptions about the form of the mapping function and how it can be learned. \textbf{Parametric} machine learning models assumes a specific functional form or structure for the mathematical mapping. This functional form depends on a finite number of parameters, where parameters can be thought as the building blocks of a parametric model, so that designing a parametric model reduces to findings its parameters.\\
+   
+   ``\textit{A learning model that summarizes data with a set of parameters of fixed size (independent of the number of training examples) is called a parametric model.\\
+   	No matter how much data you throw at a parametric model, it won't change its mind
+   about how many parameters it needs.}'' - \href{https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997/}{Artificial Intelligence: A Modern Approach}, page 737.\\
+   
+   \noindent Linear models that are either used for classification or regression are examples of parametric models. In order to compute the label for a given vector of features, linear models computes a weighted sum of the features and then uses this weighted sum in the computation of the predicted label. Training a linear model means using the training dataset to find the appropriate weight for each features; the weights are the parameters of the linear models. Linear regression (regression model) and logistic regression (classification model) are both examples of linear models. We will discuss linear models with more details in the next section.\\
+   
+   \textbf{Non-parametric} models are models that do not assume a strict structure for the mathematical mapping. The term ``non-parametric'' does not mean that these models do not have parameters, but it means that they cannot be described with a finite number of parameters which could be affected by the number of training examples.\\
+   
+  ``\textit{A nonparametric model is one that cannot be characterized by a bounded set of parameters}''- \href{https://www.amazon.com/Artificial-Intelligence-A-Modern-Approach/dp/0134610997/}{Artificial Intelligence: A Modern Approach}, page 737.\\
+  
+  Examples of non-parametric models include K-nearest neighbors and decision trees, which will be explained later in the course. 
+  
+  \section{Linear Models}
+  Here we discuss what we mean by linear models, how to geometrically interpret them and what training linear models mean.
+  
+  \subsection{What are linear models?}
+  Assume $\textbf{x} \in \mathbb{R}^m$ a vector of $m$ features:
+  $$\textbf{x}=\begin{bmatrix}
+  	x_1\\
+  	x_2\\
+  	\vdots\\
+  	x_m
+  \end{bmatrix}$$
+  A linear model consists of computing a weighted sum of the features: it weights each feature $x_i$ with a weight $w_i \in \mathbb{R}$ and then sums the weighted features as in:
+  $$\sum_{i^1}^{m}w_ix_i + w_0$$
+  We can collect the weights into a vector: the weight vector $\textbf{w}$:
+  $$\textbf{w}=\begin{bmatrix}
+  	w_1\\
+  	w_2\\
+  	\vdots\\
+  	w_m
+  \end{bmatrix}$$
+  The weighted sum can then be expressed as the dot product between the weight vector and the feature vector:
+   $$\sum_{i=1}^{m}w_ix_i + w_0 = \textbf{x}^T\textbf{w} + w_0 $$
+  By converting the higher dimensional feature vector into a scalar value, linear models try to compress the information contained in each feature in one scalar:
+  \begin{itemize}
+  	\item  With linear regression (regression model), this scalar is directly used as the predicted label or response:
+  	$$y = \textbf{x}^T\textbf{w} + w_0  $$
+  	\item With linear classification models, a threshold is applied to this scalar value to predict a class. With binary classification, the label does not represent a continuous value, the label represents one of two possibilities i.e.,  $y \in \{0, 1\}$. A linear classification model applies a threshold to the weighted sum so that if the weighted sum is greater than the threshold, the label is predicted to be one of the two possibilities. Otherwise (the weighted sum is less than the threshold), the label is predicted to be the other possibility. For example, the weights of the linear model can be found so that:
+  	\begin{align*}
+  		y =   \begin{cases}
+  			0 & \text{if } \textbf{x}^T\textbf{w} + w_0 < 0 \\
+  			1 & \text{if } \textbf{x}^T\textbf{w} + w_0 \geq 0\\
+  		\end{cases}  
+  	\end{align*}
+
+   In classification, we have more than one linear models. Logistic regression, linear discriminant analysis, linear SVM (support-vector machines) are all examples of linear classification models. Each one of this model motivates the problem of finding the weights in a different way.
+   \end{itemize}
+  
+  \begin{figure}[h]
+  	\centering
+  	\includegraphics[width=150mm]{linearModel.png}
+  	\caption{\small Linear machine learning models.}
+  \end{figure}
+  
+  
+  \subsection{Geometric interpretation of linear models}
+  For linear regression, the equation $y = \textbf{x}^T\textbf{w} + w_0$ represents a hyperplane's equation in the space with $y$ and the feature vector $\textbf{x}$ (i.e., if we plot $y$ vs $\textbf{x}$). For linear classification models, the equation $\textbf{x}^T\textbf{w} + w_0 = 0$ represents a hyperplane's equation in the features space. Let's look at some examples for regression and classification.\\
+  
+  \noindent \textbf{Regression}\\
+  \textit{Simple Linear Regression }- Let's assume we have one feature, then the linear regression model is given by:
+  $$y = w_1x_1 + w_0$$
+  This is known as simple linear regression. Given that we're interested in knowing how $y$ is related to $x_1$, the above equation represents a line equation, and the parameters $w_1$ and $w_0$ represent the slope and y-intercept respectively of the line.
+   \begin{figure}[h]
+  	\centering
+  	\includegraphics[width=150mm]{SimpleLinReg.png}
+  	\caption{\small Simple Linear Regression (\href{https://www.kaggle.com/datasets/uciml/autompg-dataset}{data source} for the example shown on the right)}
+  	\label{SLR}
+  \end{figure}
+
+   \noindent As shown in figure \ref{SLR}, a simple linear regression model fits the observed training data with a line. The example shown on the right shows if we can predict car fuel consumption in miles per gallon (MPG) from the car's weight. The line plotted is the line obtained if we train the data with a simple linear regression model. Although the relationship between MPG and weight is not perfectly linear, the linear fit captures the essence of the relationship. As already  mentioned, models are always approximations of real-life. \\
+   
+    \begin{figure}[h!]
+   	\centering
+   	\includegraphics[width=80mm]{linRegExample2.png}
+   	\caption{\small Linear Regression in a three-dimensional setting, with two features and one response. (\href{https://www.kaggle.com/datasets/uciml/autompg-dataset}{data source})}
+   	\label{SLR2}
+   \end{figure}
+  
+  \noindent \textit{Multiple Linear Regression} - If we now have two features, then the linear regression model is given by:
+  $$y = w_1x_1 + w_2x_2 + w_0$$
+  This equation represents the equation of a plane as shown in figure \ref{SLR2}. In this example, in addition to weight, we also consider horsepower as an additional feature that can be useful in predicting MPG. The plane shown is obtained if we train the data with a linear regression model.
+  
+  
+  
+  
+  \noindent More generally, given $m$ features, the linear regression model :  $y = \textbf{x}^T\textbf{w} + w_0 $ represents the equation of the hyperplane in the $m$+1-dimensional space given by the response $y$ and the $m$ features.\\
+  
+  \noindent\textbf{Classification}\\
+  In linear classification, finding the weights such that
+  	\begin{align*}
+  	y =   \begin{cases}
+  		0 & \text{if } \textbf{x}^T\textbf{w} + w_0 < 0 \\
+  		1 & \text{if } \textbf{x}^T\textbf{w} + w_0 \geq 0\\
+  	\end{cases}  
+  \end{align*}
+  means finding the hyperplane
+  $$\textbf{x}^T\textbf{w} + w_0 =0$$
+  that divides the feature space (space of all possible feature vectors) into two half-spaces so that all vector features that satisfy $\textbf{x}^T\textbf{w} + w_0 < 0$ are predicted to belong to class 0, and that all vector features that satisfy $\textbf{x}^T\textbf{w} + w_0 \geq 0$ are predicted to belong to class 1. Note that $\textbf{w}$ represents the normal vector that defines the orientation of the hyperplane.\\
+  
+    \begin{figure}[h!]
+  	\centering
+  	\includegraphics[width=170mm]{classLin.png}
+  	\caption{\small Example of Linear Classification in a 2-dimensional feature space (\href{https://www.kaggle.com/datasets/mohansacharya/graduate-admissions?datasetId=14872&searchQuery=logistic}{data source}).}
+  	\label{linearClass}
+  \end{figure}
+  
+ \noindent \textit{Example of two features} - assume we have two features, then as seen in figure \ref{linearClass}, the line given by the following equation:
+  $$\textbf{x}^T\textbf{w} + w_0 = 0 \; \text{or} \; w_1x_1 +w_2x_2 +w_0 = 0$$
+  divides the 2-dimensional feature space into two half-planes defined as follows: 
+  \begin{itemize}
+  	\item  any point that is on the same side of the normal vector $\textbf{w}$ should satisfy  $$\textbf{x}^T\textbf{w} + w_0 > 0$$ and is assigned to class 1;
+  	\item  any point that is on the other side of the normal vector $\textbf{w}$ should satisfy  $$\textbf{x}^T\textbf{w} + w_0 < 0$$ and is assigned to class 0.
+  \end{itemize}
+
+  \noindent The right plot of figure \ref{linearClass} shows the GRE scores and TOEFL scores of students who applied to graduated school and whether they were admitted or not. Given this data, we're interested in predicting if a student will be admitted or not based on their GRE and TOEFL scores. The line shown is obtained by training the data with logistic regression (a linear classification model). In figure \ref{linearClass3}, the colors shown are the actual values of the weighted sum (with no thresholding) in the feature space. We will learn later that with logistic regression, the higher (lower) this value is, the more the model is certain that the feature vector corresponds to class 1 (0). From this example, one can directly see a limitation for linear models: not all data is linearly-separable and finding a more complex model (non-linear or adding more features) might be sometimes more helpful than using a linear model.
+
+    \begin{figure}[h]
+   	\centering
+   	\includegraphics[width=100mm]{classLin2.png}
+   	\caption{\small Possible values of the weighted sum in the feature space.}
+   	\label{linearClass2}
+   \end{figure}
+     
+   
+   \noindent \textit{Example of three features} - assume we have three features, then as seen in figure \ref{linearClass3}, the plane given by the following equation:
+    $$\textbf{x}^T\textbf{w} + w_0 = 0\; \text{or} \; w_1x_1 +w_2x_2 +w_3x_3+w_0 = 0$$
+   divides the 3-dimensional features space into two half-spaces. In this figure, three physiological features (depth, intensity, radius) were extracted from breast thermograms to classify normal and abnormal breast thermograms\footnote{Thermography uses a special camera to measure the temperature of the skin on the breast's surface.}.
+   
+   \begin{figure}[h!]
+   	\centering
+   	\includegraphics[width=75mm]{classLin3.jpg}
+   	\caption{\small Linear classification of normal and abnormal breast thermograms using three physiological features. (\href{https://www.mdpi.com/1424-8220/21/22/7751/htm}{Image source}).}
+   	\label{linearClass3}
+   \end{figure}
+   
+   \section{Training Linear Models}
+   As already mentioned, linear models are parametric models that have the feature weights as the model's parameters. These weights are the essential components of linear models, so that knowing them is enough for us to know everything about the linear model. How to choose these weights? This is the goal of the training phase. The weights are learned from the set of training pairs of feature vectors and corresponding labels: $\{\textbf{x}^{(i)}, y^{(i)}\}$.\\
+   
+   In simple linear regression, given some training dataset depicted in figure \ref{train1}, we see a strong linear relationship that can be modeled using a line. There's an infinite number of possibilities for choosing that line; in other words we have an infinite number of choices for $w_1$ and $w_0$: varying $w_1$ changes the orientation of the line and varying $w_0$ moves the line vertically. The best $w_1$ and $w_0$ are chosen so that the overall error made by the model is minimized. The red vertical lines shown in figure \ref{train1} on the right, represent the error between each observed label and its predicted label. The fitted line is chosen to minimize the sum of the squared vertical distances between each observation and the line. 
+   
+   \begin{figure}[h!]
+  	\centering
+  	\includegraphics[width=150mm]{trainLinReg.png}
+  	\caption{\small The fitted line is chosen by minimizing the sum of the squared vertical distances between each observation and the line.}
+  	\label{train1}
+  \end{figure}
+   
+   In classification, we know that the normal vector is what define the orientation of the separating hyperplane. We can have an infinite number of possibilities for the orientation of the separating hyperplane. We choose the one that best minimize the overall classification error int he training dataset. Each linear classification model (logistic regression, linear SVM, linear discriminant analysis) motivates the problem in a different way but in all cases finding the parameters of a linear model is formulated as an optimization problems that tries to find the best separating hyperplane.
+   
+     
+   \begin{figure}[h!]
+   	\centering
+   	\includegraphics[width=150mm]{trainLinClass.png}
+   	\caption{\small The separating hyperplane is chosen by minimizing the overall miss-classification.}
+   	\label{train2}
+   \end{figure}
+   
+   
+   \section{Advantages and disadvantages of linear models}
+   Linear models are easy to understand and interpret models. Each feature reflects the contribution of each feature on the overall prediction. Linear models could be extremely useful when data shows strong linear relationship. However, this is not true for all data. In regression, the features might be related to the response in a more complex way so that summarizing it with a hyperplane might not be enough. In classification, not all data is linearly separable.
+   We will learn more about other non-linear models. 
+   
+   \section{Resources}
+   
+\end{document}

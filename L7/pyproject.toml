@@ -1,0 +1,11 @@
+[project]
+name = "l7"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "asyncio>=4.0.0",
+    "claude-agent-sdk>=0.1.19",
+    "python-dotenv>=1.2.1",
+]

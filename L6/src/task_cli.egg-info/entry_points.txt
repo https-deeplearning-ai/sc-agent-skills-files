@@ -1,0 +1,2 @@
+[console_scripts]
+task = task.main:app
