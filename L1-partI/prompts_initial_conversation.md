@@ -45,4 +45,4 @@ OUTPUT FORMAT
 * Table summarizing showing the metrics (columns) for each channel and indicating whether the ROAS are above the target ROAS, if CPA is below the MAX CPA and if net profit is positive
 
 ## Part 3
-I've attached the best practices for budget reallocation, how should I reallocation my budget? I can shift up to $10k between channels, and limit increases to 15% per channel.
+I've attached the best practices for budget reallocation, how should I reallocate my budget? I can shift up to $10k between channels, and limit increases to 15% per channel.
