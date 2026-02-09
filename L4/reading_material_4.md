@@ -8,6 +8,8 @@
 For a complete list of Skills creation best practices and specification, make sure to check out:
 - <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank">Skill authoring best practices</a>
 - <a href="https://agentskills.io/specification" target="_blank">Specification</a>
+- <a href="https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf?hsLang=en" target="_blank">The Complete Guide
+to Building Skills for Claude</a>
 
 ## How to Disable Plugins in Claude Code?
 
