@@ -25,6 +25,10 @@ Google_Ads, 5.0%, 4.5%
 TikTok_Ads,  2.0%, 0.9%  
 Email, 15.0%, 2.1%
 
+OUTPUT FORMAT:
+* Table that has the actual computed metrics and benchmark as columns and the channels as rows
+* Brief interpretation for each channel
+
 ## Part 2
 
 EFFICIENCY ANALYSIS 
