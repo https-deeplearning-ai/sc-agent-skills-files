@@ -4,7 +4,7 @@
 
 ### Skills vs MCP
 
-| Feature | MCP | Skills |
+| Feature | MCP  | Skills |
 |--------|-----|--------|
 | **Purpose** | Connects your agent to external systems and data (databases, APIs, services) | Teaches your agent what to do with that data |
 | **Example** | MCP server connects to a database | Skill says "Compute metric X using columns A and B of this table" |
