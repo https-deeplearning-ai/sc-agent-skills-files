@@ -1,6 +1,7 @@
 ---
 name: analyzing-time-series
 description: Comprehensive diagnostic analysis of time series data. Use when users provide CSV time series data and want to understand its characteristics before forecasting - stationarity, seasonality, trend, forecastability, and transform recommendations.
+Test reference
 ---
 
 # Time Series Diagnostics
